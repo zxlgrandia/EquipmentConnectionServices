@@ -1,0 +1,10 @@
+D:\SQLLITE\(读卡器)EYE-U010_M1-U010_V.1.0\eye-U010及M1-U010读写器演示程序及开发包\Example\C#\RF\bin\x64\Debug\RF.exe.config
+D:\SQLLITE\(读卡器)EYE-U010_M1-U010_V.1.0\eye-U010及M1-U010读写器演示程序及开发包\Example\C#\RF\bin\x64\Debug\RF.exe
+D:\SQLLITE\(读卡器)EYE-U010_M1-U010_V.1.0\eye-U010及M1-U010读写器演示程序及开发包\Example\C#\RF\bin\x64\Debug\RF.pdb
+D:\SQLLITE\(读卡器)EYE-U010_M1-U010_V.1.0\eye-U010及M1-U010读写器演示程序及开发包\Example\C#\RF\obj\x64\Debug\RF.csprojAssemblyReference.cache
+D:\SQLLITE\(读卡器)EYE-U010_M1-U010_V.1.0\eye-U010及M1-U010读写器演示程序及开发包\Example\C#\RF\obj\x64\Debug\WindowsFormsApplication1.Form1.resources
+D:\SQLLITE\(读卡器)EYE-U010_M1-U010_V.1.0\eye-U010及M1-U010读写器演示程序及开发包\Example\C#\RF\obj\x64\Debug\WindowsFormsApplication1.Properties.Resources.resources
+D:\SQLLITE\(读卡器)EYE-U010_M1-U010_V.1.0\eye-U010及M1-U010读写器演示程序及开发包\Example\C#\RF\obj\x64\Debug\RF.csproj.GenerateResource.cache
+D:\SQLLITE\(读卡器)EYE-U010_M1-U010_V.1.0\eye-U010及M1-U010读写器演示程序及开发包\Example\C#\RF\obj\x64\Debug\RF.csproj.CoreCompileInputs.cache
+D:\SQLLITE\(读卡器)EYE-U010_M1-U010_V.1.0\eye-U010及M1-U010读写器演示程序及开发包\Example\C#\RF\obj\x64\Debug\RF.exe
+D:\SQLLITE\(读卡器)EYE-U010_M1-U010_V.1.0\eye-U010及M1-U010读写器演示程序及开发包\Example\C#\RF\obj\x64\Debug\RF.pdb
