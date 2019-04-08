@@ -16,7 +16,7 @@ namespace WindowsFormsApplication1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm()); //UDPForm SensorForm FormWeb FormTest FormClient
+            Application.Run(new MainServiceForm()); //MainForm UDPForm SensorForm FormWeb FormTest FormClient
         }
         //public int icdev; // 通讯设备标识符
 

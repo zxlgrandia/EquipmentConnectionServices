@@ -5,64 +5,78 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Windows.Forms;
+using System.Threading;
 using WebSocketSharp;
 using WebSocketSharp.Server;
+using System.Configuration;
 
 namespace WindowsFormsApplication1
 {
-    public partial class FormWeb : Form
+    public partial class CardFormService : Form
     {
-        public FormWeb()
+        public CardFormService()
         {
             InitializeComponent();
         }
         WebSocketServer wssv;
-        // 启动服务
-        private void bt_star_Click(object sender, EventArgs e)
+        private void toolStripButton_star_Click(object sender, EventArgs e)
         {
-            if (null != wssv)
-            {
-                wssv.Stop();
-            }
-            string ads = textBox_ads.Text;
-            string op = textBox_op.Text;
-            if (string.IsNullOrEmpty(ads)) {
-                list_m.Items.Add("请设置地址!例如：ws://192.168.1.115:8086");
-                return;
+            try {
+                if (null != wssv)
+                {
+                    wssv.Stop();
+                }
+                string ads = Convert.ToString(ConfigurationManager.AppSettings["card_ads"]);
+                string op = Convert.ToString(ConfigurationManager.AppSettings["card_op"]);
+                if (string.IsNullOrEmpty(ads))
+                {
+                    list_m.Items.Add("请设置地址!例如：ws://192.168.1.115:8086");
+                    return;
 
+                }
+                if (string.IsNullOrEmpty(op))
+                {
+                    list_m.Items.Add("请设置方法!例如：/Laputa");
+                    return;
+                }
+                wssv = new WebSocketServer(ads);
+                wssv.AddWebSocketService<Laputa>(op);
+                wssv.Start();
+
+
+                //  Open();
+                //  Console.ReadKey(true);
+                toolStripLabel_status.Text = "服务状态：启动服务！";
+                list_m.Items.Add("启动服务!");
+            } catch {
+                MessageBox.Show("启动异常！");
             }
-            if (string.IsNullOrEmpty(op))
+        
+        }
+
+        private void toolStripButton_stop_Click(object sender, EventArgs e)
+        {
+            try
             {
-                list_m.Items.Add("请设置方法!例如：/Laputa");
-                return;
+                if (null != wssv)
+                {
+                    wssv.Stop();
+                    // CloseCard();
+                    list_m.Items.Add("关闭服务!");
+                    toolStripLabel_status.Text = "服务状态：关闭服务！";
+                }
             }
-            wssv = new WebSocketServer("ws://127.0.0.1:8086");
-            wssv.AddWebSocketService<Laputa>(op);
-            wssv.Start();
+            catch {
+                MessageBox.Show("关闭服务异常！");
+            }
            
-
-            //  Open();
-            //  Console.ReadKey(true);
-            list_m.Items.Add("启动服务!");
-
         }
        
-
-        private void bt_close_Click(object sender, EventArgs e)
-        {
-            if (null!= wssv) {
-                wssv.Stop();
-                // CloseCard();
-                list_m.Items.Add("关闭服务!");
-            }
-         
-        }
-
-     
     }
-    public static class JB {
+
+    public static class JB
+    {
         public static int d = 0;
     }
 
@@ -76,10 +90,10 @@ namespace WindowsFormsApplication1
                       ? "I've been balused already..."
                       : "I'm not available now.";
             Open();
-            string kahao =  ReadCard();
+            string kahao = ReadCard();
             CloseCard();
             Send(kahao);
-          
+
         }
 
         public int icdev;
@@ -91,9 +105,10 @@ namespace WindowsFormsApplication1
             icdev = JB.d;
             if (icdev > 0)
             {
-               // Program.rf_exit(icdev);
+                // Program.rf_exit(icdev);
             }
-            if (icdev <= 0) {
+            if (icdev <= 0)
+            {
                 icdev = Program.rf_init(0, 9600);
             }
             JB.d = icdev;
@@ -107,7 +122,7 @@ namespace WindowsFormsApplication1
                 // Program.rf_beep(icdev, 25); // 蜂鸣时间，单位是25毫秒
             }
             else { }
-              //  list_m.Items.Add("连接读卡设备失败!");
+            //  list_m.Items.Add("连接读卡设备失败!");
 
             byte[] key = { 0xff, 0xff, 0xff, 0xff, 0xff, 0xff };
             int mode = 0;
@@ -118,7 +133,7 @@ namespace WindowsFormsApplication1
                 if (st != 0)
                 {
                     string s1 = Convert.ToString(sector);
-                   // list_m.Items.Add(s1 + " sector rf_load_key error!");
+                    // list_m.Items.Add(s1 + " sector rf_load_key error!");
                 }
                 //else
                 //{
@@ -145,10 +160,10 @@ namespace WindowsFormsApplication1
             else
             {
                 byte[] snr1 = new byte[8];
-              //  list_m.Items.Add("寻卡成功!");
+                //  list_m.Items.Add("寻卡成功!");
                 Program.hex_a(snr, snr1, 4); // 读取软件版本号
-               // list_m.Items.Add(System.Text.Encoding.Default.GetString(snr1));
-               
+                                             // list_m.Items.Add(System.Text.Encoding.Default.GetString(snr1));
+
                 Program.rf_beep(icdev, 50); // 蜂鸣时间，单位是50毫秒
                 return System.Text.Encoding.Default.GetString(snr1);
             }
@@ -162,9 +177,9 @@ namespace WindowsFormsApplication1
             st = Program.rf_exit(icdev);
             if (st == 0)
             {
-               // list_m.Items.Add("断开连接！");
+                // list_m.Items.Add("断开连接！");
             }
-             icdev = 0;
+            icdev = 0;
             // timer1.Enabled = false;
             JB.d = icdev;
         }
