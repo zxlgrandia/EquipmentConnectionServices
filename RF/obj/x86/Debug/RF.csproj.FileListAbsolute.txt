@@ -64,3 +64,4 @@ D:\webcode\EquipmentConnectionServices\RF\obj\x86\Debug\WindowsFormsApplication1
 D:\webcode\EquipmentConnectionServices\RF\obj\x86\Debug\WindowsFormsApplication1.MainServiceForm.resources
 D:\webcode\EquipmentConnectionServices\RF\obj\x86\Debug\WindowsFormsApplication1.CardFormService.resources
 D:\webcode\EquipmentConnectionServices\RF\obj\x86\Debug\WindowsFormsApplication1.ElectronicScaleFormService.resources
+D:\webcode\EquipmentConnectionServices\RF\obj\x86\Debug\WindowsFormsApplication1.VernierCaliperFormService.resources

@@ -157,5 +157,51 @@ namespace WindowsFormsApplication1
                 }
             }
         }
+        /// <summary>
+        /// 游标卡尺
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItem_VernierCaliper_Click(object sender, EventArgs e)
+        {
+            VernierCaliperFormService config = GenericSingleton<VernierCaliperFormService>.CreateInstrance();
+            config.TopLevel = false;
+            if (tabControl1.TabPages.Count > 1)
+            {
+                bool isCreate = true;
+                for (int i = 0; i < tabControl1.TabPages.Count; i++)
+                {
+                    if (tabControl1.TabPages[i].Text == "游标卡尺服务")
+                    {
+                        isCreate = false;
+                    }
+                }
+                if (isCreate)
+                {
+                    TabPage Page = new TabPage();
+                    Page.Text = "游标卡尺服务";
+                    Page.Controls.Add(config);
+                    config.Show();
+                    tabControl1.Controls.Add(Page);
+                }
+            }
+            else
+            {
+                if (tabControl1.TabPages[0].Text == "服务信息")
+                {
+                    tabControl1.TabPages[0].Text = "游标卡尺服务";
+                    tabControl1.TabPages[0].Controls.Add(config);
+                    config.Show();
+                }
+                else
+                {
+                    TabPage Page = new TabPage();
+                    Page.Text = "游标卡尺服务";
+                    Page.Controls.Add(config);
+                    config.Show();
+                    tabControl1.Controls.Add(Page);
+                }
+            }
+        }
     }
 }

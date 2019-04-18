@@ -187,7 +187,7 @@ namespace WindowsFormsApplication1
 
             //定义DataReceived事件，当串口收到数据后触发事件
             sp.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceived);
-            isHex = true;
+            isHex = false;
 
 
             void sp_DataReceived(object sender, SerialDataReceivedEventArgs e)

@@ -36,6 +36,10 @@ namespace WindowsFormsApplication1
                 case 2:
                     getWSDConfig(); // 温湿度
                     break;
+                case 3:
+                    getKCConfig(); // 游标卡尺
+                    break;
+                    
             }
         }
 
@@ -75,6 +79,24 @@ namespace WindowsFormsApplication1
 
                 
         }
+        // 游标卡尺
+        private void getKCConfig()
+        {
+            textBox_KC_ads.Text = Convert.ToString(ConfigurationManager.AppSettings["KC_ads"]);
+            textBox_KC_op.Text = Convert.ToString(ConfigurationManager.AppSettings["KC_op"]);
+
+            for (int i = 0; i < 10; i++)
+            {
+                cbx_KC_COMPort.Items.Add("COM" + (i + 1).ToString());
+            }
+            cbx_KC_COMPort.Text = Convert.ToString(ConfigurationManager.AppSettings["KC_COMPort"]);
+            cbx_KC_Paritv.Text = Convert.ToString(ConfigurationManager.AppSettings["KC_Paritv"]);
+            cbx_KC_BaudRate.Text = Convert.ToString(ConfigurationManager.AppSettings["KC_BaudRate"]);
+            cbx_KC_DataBits.Text = Convert.ToString(ConfigurationManager.AppSettings["KC_DataBits"]);
+            cbx_KC_StopBits.Text = Convert.ToString(ConfigurationManager.AppSettings["KC_StopBits"]);
+
+
+        }
 
 
         private void toolStripButton_DZC_save_Click(object sender, EventArgs e)
@@ -109,5 +131,19 @@ namespace WindowsFormsApplication1
         {
             getCardConfig(); // 刷卡
         }
+        // 游标卡尺保存
+        private void toolStripButton_KC_save_Click(object sender, EventArgs e)
+        {
+            ConfigHelper.UpdateAppConfig("KC_ads", textBox_KC_ads.Text.ToString());
+            ConfigHelper.UpdateAppConfig("KC_op", textBox_KC_op.Text.ToString());
+
+            ConfigHelper.UpdateAppConfig("KC_COMPort", cbx_KC_COMPort.Text.ToString());
+            ConfigHelper.UpdateAppConfig("KC_Paritv", cbx_KC_Paritv.Text.ToString());
+            ConfigHelper.UpdateAppConfig("KC_BaudRate", cbx_KC_BaudRate.Text.ToString());
+            ConfigHelper.UpdateAppConfig("KC_DataBits", cbx_KC_DataBits.Text.ToString());
+            ConfigHelper.UpdateAppConfig("KC_StopBits", cbx_KC_StopBits.Text.ToString());
+        }
+
+
     }
 }
