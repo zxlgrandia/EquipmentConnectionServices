@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfigForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.toolStrip_CARD = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton_card_save = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBox_card_op = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -56,6 +58,8 @@
             this.textBox_DZC_ads = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton_WSD_save = new System.Windows.Forms.ToolStripButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox_WSD_ServerIP = new System.Windows.Forms.TextBox();
@@ -64,21 +68,40 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBox_WSD_ServerPort = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.toolStrip_CARD = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton_card_save = new System.Windows.Forms.ToolStripButton();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton_WSD_save = new System.Windows.Forms.ToolStripButton();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton_KC_save = new System.Windows.Forms.ToolStripButton();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cbx_KC_DataBits = new System.Windows.Forms.ComboBox();
+            this.cbx_KC_StopBits = new System.Windows.Forms.ComboBox();
+            this.cbx_KC_Paritv = new System.Windows.Forms.ComboBox();
+            this.cbx_KC_BaudRate = new System.Windows.Forms.ComboBox();
+            this.cbx_KC_COMPort = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.textBox_KC_op = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.textBox_KC_ads = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.toolStrip_CARD.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.toolStrip_DZC.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.toolStrip_CARD.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.toolStrip2.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -87,6 +110,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -105,6 +129,25 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "刷卡器配置";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // toolStrip_CARD
+            // 
+            this.toolStrip_CARD.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton_card_save});
+            this.toolStrip_CARD.Location = new System.Drawing.Point(3, 3);
+            this.toolStrip_CARD.Name = "toolStrip_CARD";
+            this.toolStrip_CARD.Size = new System.Drawing.Size(774, 25);
+            this.toolStrip_CARD.TabIndex = 14;
+            this.toolStrip_CARD.Text = "刷卡";
+            // 
+            // toolStripButton_card_save
+            // 
+            this.toolStripButton_card_save.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_card_save.Image")));
+            this.toolStripButton_card_save.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_card_save.Name = "toolStripButton_card_save";
+            this.toolStripButton_card_save.Size = new System.Drawing.Size(52, 22);
+            this.toolStripButton_card_save.Text = "保存";
+            this.toolStripButton_card_save.Click += new System.EventHandler(this.toolStripButton_card_save_Click);
             // 
             // groupBox1
             // 
@@ -382,6 +425,25 @@
             this.tabPage3.Text = "温湿度传感器";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton_WSD_save});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(780, 25);
+            this.toolStrip1.TabIndex = 1;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButton_WSD_save
+            // 
+            this.toolStripButton_WSD_save.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_WSD_save.Image")));
+            this.toolStripButton_WSD_save.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_WSD_save.Name = "toolStripButton_WSD_save";
+            this.toolStripButton_WSD_save.Size = new System.Drawing.Size(52, 22);
+            this.toolStripButton_WSD_save.Text = "保存";
+            this.toolStripButton_WSD_save.Click += new System.EventHandler(this.toolStripButton_WSD_save_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label5);
@@ -448,50 +510,230 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.groupBox4);
+            this.tabPage4.Controls.Add(this.groupBox6);
+            this.tabPage4.Controls.Add(this.toolStrip2);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(780, 413);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "工业相机";
+            this.tabPage4.Text = "游标卡尺";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // toolStrip_CARD
+            // tabPage5
             // 
-            this.toolStrip_CARD.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton_card_save});
-            this.toolStrip_CARD.Location = new System.Drawing.Point(3, 3);
-            this.toolStrip_CARD.Name = "toolStrip_CARD";
-            this.toolStrip_CARD.Size = new System.Drawing.Size(774, 25);
-            this.toolStrip_CARD.TabIndex = 14;
-            this.toolStrip_CARD.Text = "刷卡";
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(780, 413);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "工业相机";
+            this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // toolStripButton_card_save
+            // toolStrip2
             // 
-            this.toolStripButton_card_save.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_card_save.Image")));
-            this.toolStripButton_card_save.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton_card_save.Name = "toolStripButton_card_save";
-            this.toolStripButton_card_save.Size = new System.Drawing.Size(52, 22);
-            this.toolStripButton_card_save.Text = "保存";
-            this.toolStripButton_card_save.Click += new System.EventHandler(this.toolStripButton_card_save_Click);
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton_KC_save});
+            this.toolStrip2.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.Size = new System.Drawing.Size(780, 25);
+            this.toolStrip2.TabIndex = 19;
+            this.toolStrip2.Text = "电子称";
             // 
-            // toolStrip1
+            // toolStripButton_KC_save
             // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton_WSD_save});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(780, 25);
-            this.toolStrip1.TabIndex = 1;
-            this.toolStrip1.Text = "toolStrip1";
+            this.toolStripButton_KC_save.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_KC_save.Image")));
+            this.toolStripButton_KC_save.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_KC_save.Name = "toolStripButton_KC_save";
+            this.toolStripButton_KC_save.Size = new System.Drawing.Size(52, 22);
+            this.toolStripButton_KC_save.Text = "保存";
+            this.toolStripButton_KC_save.Click += new System.EventHandler(this.toolStripButton_KC_save_Click);
             // 
-            // toolStripButton_WSD_save
+            // groupBox4
             // 
-            this.toolStripButton_WSD_save.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_WSD_save.Image")));
-            this.toolStripButton_WSD_save.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton_WSD_save.Name = "toolStripButton_WSD_save";
-            this.toolStripButton_WSD_save.Size = new System.Drawing.Size(52, 22);
-            this.toolStripButton_WSD_save.Text = "保存";
-            this.toolStripButton_WSD_save.Click += new System.EventHandler(this.toolStripButton_WSD_save_Click);
+            this.groupBox4.Controls.Add(this.cbx_KC_DataBits);
+            this.groupBox4.Controls.Add(this.cbx_KC_StopBits);
+            this.groupBox4.Controls.Add(this.cbx_KC_Paritv);
+            this.groupBox4.Controls.Add(this.cbx_KC_BaudRate);
+            this.groupBox4.Controls.Add(this.cbx_KC_COMPort);
+            this.groupBox4.Controls.Add(this.label13);
+            this.groupBox4.Controls.Add(this.label14);
+            this.groupBox4.Controls.Add(this.label15);
+            this.groupBox4.Controls.Add(this.label16);
+            this.groupBox4.Controls.Add(this.label17);
+            this.groupBox4.Location = new System.Drawing.Point(15, 167);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox4.Size = new System.Drawing.Size(622, 138);
+            this.groupBox4.TabIndex = 21;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "串口信息";
+            // 
+            // cbx_KC_DataBits
+            // 
+            this.cbx_KC_DataBits.FormattingEnabled = true;
+            this.cbx_KC_DataBits.Items.AddRange(new object[] {
+            "8",
+            "7",
+            "6",
+            "5"});
+            this.cbx_KC_DataBits.Location = new System.Drawing.Point(341, 38);
+            this.cbx_KC_DataBits.Margin = new System.Windows.Forms.Padding(2);
+            this.cbx_KC_DataBits.Name = "cbx_KC_DataBits";
+            this.cbx_KC_DataBits.Size = new System.Drawing.Size(143, 20);
+            this.cbx_KC_DataBits.TabIndex = 17;
+            // 
+            // cbx_KC_StopBits
+            // 
+            this.cbx_KC_StopBits.FormattingEnabled = true;
+            this.cbx_KC_StopBits.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "1.5",
+            "2"});
+            this.cbx_KC_StopBits.Location = new System.Drawing.Point(56, 61);
+            this.cbx_KC_StopBits.Margin = new System.Windows.Forms.Padding(2);
+            this.cbx_KC_StopBits.Name = "cbx_KC_StopBits";
+            this.cbx_KC_StopBits.Size = new System.Drawing.Size(137, 20);
+            this.cbx_KC_StopBits.TabIndex = 16;
+            // 
+            // cbx_KC_Paritv
+            // 
+            this.cbx_KC_Paritv.FormattingEnabled = true;
+            this.cbx_KC_Paritv.Items.AddRange(new object[] {
+            "无",
+            "奇校验",
+            "偶校验"});
+            this.cbx_KC_Paritv.Location = new System.Drawing.Point(341, 14);
+            this.cbx_KC_Paritv.Margin = new System.Windows.Forms.Padding(2);
+            this.cbx_KC_Paritv.Name = "cbx_KC_Paritv";
+            this.cbx_KC_Paritv.Size = new System.Drawing.Size(143, 20);
+            this.cbx_KC_Paritv.TabIndex = 15;
+            // 
+            // cbx_KC_BaudRate
+            // 
+            this.cbx_KC_BaudRate.FormattingEnabled = true;
+            this.cbx_KC_BaudRate.Items.AddRange(new object[] {
+            "1200",
+            "2400",
+            "4800",
+            "9600",
+            "19200",
+            "38400",
+            "43000",
+            "56000",
+            "57600",
+            "115200"});
+            this.cbx_KC_BaudRate.Location = new System.Drawing.Point(56, 38);
+            this.cbx_KC_BaudRate.Margin = new System.Windows.Forms.Padding(2);
+            this.cbx_KC_BaudRate.Name = "cbx_KC_BaudRate";
+            this.cbx_KC_BaudRate.Size = new System.Drawing.Size(137, 20);
+            this.cbx_KC_BaudRate.TabIndex = 14;
+            // 
+            // cbx_KC_COMPort
+            // 
+            this.cbx_KC_COMPort.FormattingEnabled = true;
+            this.cbx_KC_COMPort.Location = new System.Drawing.Point(56, 14);
+            this.cbx_KC_COMPort.Margin = new System.Windows.Forms.Padding(2);
+            this.cbx_KC_COMPort.Name = "cbx_KC_COMPort";
+            this.cbx_KC_COMPort.Size = new System.Drawing.Size(137, 20);
+            this.cbx_KC_COMPort.TabIndex = 13;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(12, 17);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(41, 12);
+            this.label13.TabIndex = 12;
+            this.label13.Text = "通讯口";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(12, 40);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(41, 12);
+            this.label14.TabIndex = 8;
+            this.label14.Text = "波特率";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(12, 65);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(41, 12);
+            this.label15.TabIndex = 10;
+            this.label15.Text = "停止位";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(292, 17);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(29, 12);
+            this.label16.TabIndex = 11;
+            this.label16.Text = "校验";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(285, 40);
+            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(41, 12);
+            this.label17.TabIndex = 9;
+            this.label17.Text = "数据位";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.textBox_KC_op);
+            this.groupBox6.Controls.Add(this.label18);
+            this.groupBox6.Controls.Add(this.textBox_KC_ads);
+            this.groupBox6.Controls.Add(this.label19);
+            this.groupBox6.Location = new System.Drawing.Point(15, 37);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(622, 104);
+            this.groupBox6.TabIndex = 20;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "服务信息";
+            // 
+            // textBox_KC_op
+            // 
+            this.textBox_KC_op.Location = new System.Drawing.Point(339, 37);
+            this.textBox_KC_op.Name = "textBox_KC_op";
+            this.textBox_KC_op.Size = new System.Drawing.Size(167, 21);
+            this.textBox_KC_op.TabIndex = 16;
+            this.textBox_KC_op.Text = "/Laputa";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(292, 42);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(41, 12);
+            this.label18.TabIndex = 15;
+            this.label18.Text = "方法：";
+            // 
+            // textBox_KC_ads
+            // 
+            this.textBox_KC_ads.Location = new System.Drawing.Point(51, 38);
+            this.textBox_KC_ads.Name = "textBox_KC_ads";
+            this.textBox_KC_ads.Size = new System.Drawing.Size(192, 21);
+            this.textBox_KC_ads.TabIndex = 14;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(4, 42);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(41, 12);
+            this.label19.TabIndex = 13;
+            this.label19.Text = "地址：";
             // 
             // ConfigForm
             // 
@@ -505,6 +747,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.toolStrip_CARD.ResumeLayout(false);
+            this.toolStrip_CARD.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
@@ -517,12 +761,18 @@
             this.groupBox3.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.toolStrip_CARD.ResumeLayout(false);
-            this.toolStrip_CARD.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            this.toolStrip2.ResumeLayout(false);
+            this.toolStrip2.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -568,5 +818,24 @@
         private System.Windows.Forms.ToolStripButton toolStripButton_card_save;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButton_WSD_save;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.ComboBox cbx_KC_DataBits;
+        private System.Windows.Forms.ComboBox cbx_KC_StopBits;
+        private System.Windows.Forms.ComboBox cbx_KC_Paritv;
+        private System.Windows.Forms.ComboBox cbx_KC_BaudRate;
+        private System.Windows.Forms.ComboBox cbx_KC_COMPort;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.TextBox textBox_KC_op;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox textBox_KC_ads;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ToolStrip toolStrip2;
+        private System.Windows.Forms.ToolStripButton toolStripButton_KC_save;
+        private System.Windows.Forms.TabPage tabPage5;
     }
 }

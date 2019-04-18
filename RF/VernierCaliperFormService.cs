@@ -13,9 +13,9 @@ using WebSocketSharp.Server;
 
 namespace WindowsFormsApplication1
 {
-    public partial class ElectronicScaleFormService : Form
+    public partial class VernierCaliperFormService : Form
     {
-        public ElectronicScaleFormService()
+        public VernierCaliperFormService()
         {
             InitializeComponent();
         }
@@ -32,8 +32,8 @@ namespace WindowsFormsApplication1
                 wssv.Stop();
             }
 
-            string ads = Convert.ToString(ConfigurationManager.AppSettings["DZC_ads"]);
-            string op = Convert.ToString(ConfigurationManager.AppSettings["DZC_op"]);
+            string ads = Convert.ToString(ConfigurationManager.AppSettings["KC_ads"]);
+            string op = Convert.ToString(ConfigurationManager.AppSettings["KC_op"]);
             if (string.IsNullOrEmpty(ads))
             {
                 // list_m.Items.Add("请设置地址!例如：ws://192.168.1.115:8086");
@@ -47,14 +47,16 @@ namespace WindowsFormsApplication1
             }
             ChengValue.d = "";
             wssv = new WebSocketServer(ads);
-            wssv.AddWebSocketService<ElectronicScale>(op);
+            wssv.AddWebSocketService<VernierCaliper>(op);
             wssv.Start();
             list_m.Items.Add("启动服务!");
             toolStripLabel_status.Text = "服务状态：启动服务！";
         }
-        private void clearItem (){
+        private void clearItem()
+        {
 
-            if (list_m.Items.Count > 1000) {
+            if (list_m.Items.Count > 1000)
+            {
                 list_m.Items.Clear();
             }
         }
@@ -69,7 +71,6 @@ namespace WindowsFormsApplication1
                 toolStripLabel_status.Text = "服务状态：关闭服务！";
             }
         }
-
         private void OpenCom()
         {
             if (isOpen == true)
@@ -136,11 +137,11 @@ namespace WindowsFormsApplication1
 
             sp = new SerialPort();
 
-            sp.PortName = Convert.ToString(ConfigurationManager.AppSettings["DZC_COMPort"]).Trim();       //串口名
+            sp.PortName = Convert.ToString(ConfigurationManager.AppSettings["KC_COMPort"]).Trim();       //串口名
 
-            sp.BaudRate = Convert.ToInt32(Convert.ToString(ConfigurationManager.AppSettings["DZC_BaudRate"]).Trim());//波特率
+            sp.BaudRate = Convert.ToInt32(Convert.ToString(ConfigurationManager.AppSettings["KC_BaudRate"]).Trim());//波特率
 
-            float f = Convert.ToSingle(Convert.ToString(ConfigurationManager.AppSettings["DZC_StopBits"]).Trim());//停止位
+            float f = Convert.ToSingle(Convert.ToString(ConfigurationManager.AppSettings["KC_StopBits"]).Trim());//停止位
             if (f == 0)
             {
                 sp.StopBits = StopBits.None;
@@ -162,9 +163,9 @@ namespace WindowsFormsApplication1
                 sp.StopBits = StopBits.One;
             }
 
-            sp.DataBits = Convert.ToInt16(Convert.ToString(ConfigurationManager.AppSettings["DZC_DataBits"]).Trim());//数据位
+            sp.DataBits = Convert.ToInt16(Convert.ToString(ConfigurationManager.AppSettings["KC_DataBits"]).Trim());//数据位
 
-            string s = Convert.ToString(ConfigurationManager.AppSettings["DZC_Paritv"]).Trim();       //校验位
+            string s = Convert.ToString(ConfigurationManager.AppSettings["KC_Paritv"]).Trim();       //校验位
             if (s.CompareTo("无") == 0)
             {
                 sp.Parity = Parity.None;
@@ -192,16 +193,24 @@ namespace WindowsFormsApplication1
 
             void sp_DataReceived(object sender, SerialDataReceivedEventArgs e)
             {
-                System.Threading.Thread.Sleep(100);     //延时100ms等待接收数据
+                System.Threading.Thread.Sleep(50);     //延时100ms等待接收数据
 
                 //this.Invoke  跨线程访问ui的方法
                 this.Invoke((EventHandler)(delegate
                 {
                     if (isHex == false)
                     {
-                        clearItem();
-                        list_m.Items.Add(sp.ReadLine());
-                        ChengValue.d = sp.ReadLine();
+                     
+                        string rs = sp.ReadExisting();
+                        if (rs.IndexOf('S') >= 0)
+                        {
+                            clearItem();
+                            rs = rs.Substring(1, rs.Length - 1);
+                            list_m.Items.Add(rs);
+                            KachiValue.d = rs;
+                            
+                        }
+                      
                     }
                     else
                     {
@@ -221,22 +230,22 @@ namespace WindowsFormsApplication1
 
         private bool CheckPortSetting()     //串口是否设置
         {
-            if (Convert.ToString(ConfigurationManager.AppSettings["DZC_COMPort"]).Trim() == "") return false;
-            if (Convert.ToString(ConfigurationManager.AppSettings["DZC_Paritv"]).Trim() == "") return false;
-            if (Convert.ToString(ConfigurationManager.AppSettings["DZC_BaudRate"]).Trim() == "") return false;
-            if (Convert.ToString(ConfigurationManager.AppSettings["DZC_DataBits"]).Trim() == "") return false;
-            if (Convert.ToString(ConfigurationManager.AppSettings["DZC_StopBits"]).Trim() == "") return false;
+            if (Convert.ToString(ConfigurationManager.AppSettings["KC_COMPort"]).Trim() == "") return false;
+            if (Convert.ToString(ConfigurationManager.AppSettings["KC_Paritv"]).Trim() == "") return false;
+            if (Convert.ToString(ConfigurationManager.AppSettings["KC_BaudRate"]).Trim() == "") return false;
+            if (Convert.ToString(ConfigurationManager.AppSettings["KC_DataBits"]).Trim() == "") return false;
+            if (Convert.ToString(ConfigurationManager.AppSettings["KC_StopBits"]).Trim() == "") return false;
             return true;
         }
     }
 
-    public static class ChengValue
+    public static class KachiValue
     {
         public static string d = "";
     }
 
 
-    public class ElectronicScale : WebSocketBehavior
+    public class VernierCaliper : WebSocketBehavior
     {
         protected override void OnMessage(MessageEventArgs e)
         {
@@ -257,7 +266,7 @@ namespace WindowsFormsApplication1
         // 只读
         public string ReadCard()
         {
-            return ChengValue.d;
+            return KachiValue.d;
         }
 
     }

@@ -32,12 +32,13 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton_star = new System.Windows.Forms.ToolStripDropDownButton();
             this.ToolStripMenuItem_Card = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_ElectronicScale = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_Sensor = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButton_set = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_about = new System.Windows.Forms.ToolStripButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.ToolStripMenuItem_Sensor = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_ElectronicScale = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_VernierCaliper = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
@@ -59,7 +60,8 @@
             this.toolStripButton_star.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItem_Card,
             this.ToolStripMenuItem_ElectronicScale,
-            this.ToolStripMenuItem_Sensor});
+            this.ToolStripMenuItem_Sensor,
+            this.ToolStripMenuItem_VernierCaliper});
             this.toolStripButton_star.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_star.Image")));
             this.toolStripButton_star.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton_star.Name = "toolStripButton_star";
@@ -73,6 +75,20 @@
             this.ToolStripMenuItem_Card.Size = new System.Drawing.Size(180, 22);
             this.ToolStripMenuItem_Card.Text = "刷卡服务";
             this.ToolStripMenuItem_Card.Click += new System.EventHandler(this.ToolStripMenuItem_Card_Click);
+            // 
+            // ToolStripMenuItem_ElectronicScale
+            // 
+            this.ToolStripMenuItem_ElectronicScale.Name = "ToolStripMenuItem_ElectronicScale";
+            this.ToolStripMenuItem_ElectronicScale.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_ElectronicScale.Text = "电子称服务";
+            this.ToolStripMenuItem_ElectronicScale.Click += new System.EventHandler(this.ToolStripMenuItem_ElectronicScale_Click);
+            // 
+            // ToolStripMenuItem_Sensor
+            // 
+            this.ToolStripMenuItem_Sensor.Name = "ToolStripMenuItem_Sensor";
+            this.ToolStripMenuItem_Sensor.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Sensor.Text = "温湿度传感器服务";
+            this.ToolStripMenuItem_Sensor.Click += new System.EventHandler(this.ToolStripMenuItem_Sensor_Click);
             // 
             // toolStripButton_set
             // 
@@ -111,19 +127,12 @@
             this.tabPage1.Text = "服务信息";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // ToolStripMenuItem_Sensor
+            // ToolStripMenuItem_VernierCaliper
             // 
-            this.ToolStripMenuItem_Sensor.Name = "ToolStripMenuItem_Sensor";
-            this.ToolStripMenuItem_Sensor.Size = new System.Drawing.Size(180, 22);
-            this.ToolStripMenuItem_Sensor.Text = "温湿度传感器服务";
-            this.ToolStripMenuItem_Sensor.Click += new System.EventHandler(this.ToolStripMenuItem_Sensor_Click);
-            // 
-            // ToolStripMenuItem_ElectronicScale
-            // 
-            this.ToolStripMenuItem_ElectronicScale.Name = "ToolStripMenuItem_ElectronicScale";
-            this.ToolStripMenuItem_ElectronicScale.Size = new System.Drawing.Size(180, 22);
-            this.ToolStripMenuItem_ElectronicScale.Text = "电子称服务";
-            this.ToolStripMenuItem_ElectronicScale.Click += new System.EventHandler(this.ToolStripMenuItem_ElectronicScale_Click);
+            this.ToolStripMenuItem_VernierCaliper.Name = "ToolStripMenuItem_VernierCaliper";
+            this.ToolStripMenuItem_VernierCaliper.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_VernierCaliper.Text = "游标卡尺服务";
+            this.ToolStripMenuItem_VernierCaliper.Click += new System.EventHandler(this.ToolStripMenuItem_VernierCaliper_Click);
             // 
             // MainServiceForm
             // 
@@ -153,5 +162,6 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Sensor;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_ElectronicScale;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_VernierCaliper;
     }
 }
