@@ -104,6 +104,11 @@ namespace WindowsFormsApplication1
         {
 
         }
+
+        private void tsbtn_start_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 

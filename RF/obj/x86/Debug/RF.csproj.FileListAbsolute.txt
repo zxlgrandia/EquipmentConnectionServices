@@ -36,9 +36,6 @@ D:\GitHub\EquipmentConnectionServices\RF\bin\Debug\RF.exe
 D:\GitHub\EquipmentConnectionServices\RF\bin\Debug\RF.pdb
 D:\GitHub\EquipmentConnectionServices\RF\bin\Debug\websocket-sharp.dll
 D:\GitHub\EquipmentConnectionServices\RF\obj\x86\Debug\RF.csprojAssemblyReference.cache
-D:\GitHub\EquipmentConnectionServices\RF\obj\x86\Debug\WindowsFormsApplication1.ElectronicScaleForm.resources
-D:\GitHub\EquipmentConnectionServices\RF\obj\x86\Debug\WindowsFormsApplication1.FormWeb.resources
-D:\GitHub\EquipmentConnectionServices\RF\obj\x86\Debug\WindowsFormsApplication1.MainForm.resources
 D:\GitHub\EquipmentConnectionServices\RF\obj\x86\Debug\WindowsFormsApplication1.Properties.Resources.resources
 D:\GitHub\EquipmentConnectionServices\RF\obj\x86\Debug\WindowsFormsApplication1.SensorForm.resources
 D:\GitHub\EquipmentConnectionServices\RF\obj\x86\Debug\WindowsFormsApplication1.UDPForm.resources
@@ -64,3 +61,7 @@ D:\webcode\EquipmentConnectionServices\RF\obj\x86\Debug\WindowsFormsApplication1
 D:\webcode\EquipmentConnectionServices\RF\obj\x86\Debug\WindowsFormsApplication1.MainServiceForm.resources
 D:\webcode\EquipmentConnectionServices\RF\obj\x86\Debug\WindowsFormsApplication1.CardFormService.resources
 D:\webcode\EquipmentConnectionServices\RF\obj\x86\Debug\WindowsFormsApplication1.ElectronicScaleFormService.resources
+D:\GitHub\EquipmentConnectionServices\RF\obj\x86\Debug\WindowsFormsApplication1.CardFormService.resources
+D:\GitHub\EquipmentConnectionServices\RF\obj\x86\Debug\WindowsFormsApplication1.ConfigForm.resources
+D:\GitHub\EquipmentConnectionServices\RF\obj\x86\Debug\WindowsFormsApplication1.ElectronicScaleFormService.resources
+D:\GitHub\EquipmentConnectionServices\RF\obj\x86\Debug\WindowsFormsApplication1.MainServiceForm.resources

@@ -1,0 +1,9 @@
+D:\GitHub\EquipmentConnectionServices\EquipmentWindowsService\obj\Debug\EquipmentWindowsService.csprojAssemblyReference.cache
+D:\GitHub\EquipmentConnectionServices\EquipmentWindowsService\obj\Debug\EquipmentWindowsService.csproj.CoreCompileInputs.cache
+D:\GitHub\EquipmentConnectionServices\EquipmentWindowsService\bin\Debug\EquipmentWindowsService.exe.config
+D:\GitHub\EquipmentConnectionServices\EquipmentWindowsService\bin\Debug\EquipmentWindowsService.exe
+D:\GitHub\EquipmentConnectionServices\EquipmentWindowsService\bin\Debug\EquipmentWindowsService.pdb
+D:\GitHub\EquipmentConnectionServices\EquipmentWindowsService\bin\Debug\websocket-sharp.dll
+D:\GitHub\EquipmentConnectionServices\EquipmentWindowsService\obj\Debug\EquipmentWindowsService.csproj.CopyComplete
+D:\GitHub\EquipmentConnectionServices\EquipmentWindowsService\obj\Debug\EquipmentWindowsService.exe
+D:\GitHub\EquipmentConnectionServices\EquipmentWindowsService\obj\Debug\EquipmentWindowsService.pdb
