@@ -28,7 +28,7 @@ using System.Xml;
 using System.Data.SqlClient;
 using System.Collections;
 
-namespace Xiucai.Common.Data.SqlServer
+namespace Utils
 {
 	/// <summary>
 	/// The SqlHelper class is intended to encapsulate high performance, scalable best practices for 

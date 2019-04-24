@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace WindowsFormsApplication1.Model
+namespace Model
 {
-    class EquipmentTypeModel
+    public class EquipmentTypeModel
     {
         public string Id { get; set; }
         /// <summary>

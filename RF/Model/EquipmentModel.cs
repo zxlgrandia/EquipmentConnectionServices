@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace WindowsFormsApplication1.Model
+namespace Model
 {
-    class EquipmentModel
+    public class EquipmentModel
     {
         public string Id { get; set; }
         /// <summary>
@@ -28,6 +28,8 @@ namespace WindowsFormsApplication1.Model
         /// 协议编号
         /// </summary>
         public string AgreementId { get; set; }
+
+        public EquipmentAgreementModel EquipmentAgreement { get; set; }
 
     }
 }
