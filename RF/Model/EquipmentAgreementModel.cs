@@ -43,7 +43,7 @@ namespace Model
         /// <summary>
         /// COM 端口
         /// </summary>
-        public int Com { get; set; }
+        public string Com { get; set; }
         /// <summary>
         /// 比特率
         /// </summary>
@@ -55,7 +55,7 @@ namespace Model
         /// <summary>
         /// 校验
         /// </summary>
-        public int CheckPoint { get; set; }
+        public string CheckPoint { get; set; }
         /// <summary>
         /// 数据位
         /// </summary>

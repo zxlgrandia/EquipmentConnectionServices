@@ -13,6 +13,7 @@ namespace Utils
         public static string CARD_SERVICE = ConfigurationManager.AppSettings["card_service"].ToString();
         public static string HT_SERVICE = ConfigurationManager.AppSettings["ht_service"].ToString();
         public static string ES_SERVICE = ConfigurationManager.AppSettings["es_service"].ToString();
+        public static string VC_SERVICE = ConfigurationManager.AppSettings["vc_service"].ToString();
 
         /// <summary>  
         /// 写入日志到文本文件  
