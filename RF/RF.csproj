@@ -121,7 +121,6 @@
     <Compile Include="ElectronicScaleFormService.Designer.cs">
       <DependentUpon>ElectronicScaleFormService.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\EquipmentAgreementModel.cs" />
     <Compile Include="GenericSingleton.cs" />
     <Compile Include="MainServiceForm.cs">
       <SubType>Form</SubType>
