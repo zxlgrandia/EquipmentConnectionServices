@@ -16,11 +16,7 @@ namespace WindowsFormsApplication1.ServicesFactory
         public override WebSocketBehavior CreateService(EquipmentModel equipment)
         {
             // 获取设备信息
-            // 初始化传感器设备服务
-            SensorEquipmentService service = new SensorEquipmentService();
-            service.IP = equipment.EquipmentAgreement.WebSocketIp;
-            service.Port = equipment.EquipmentAgreement.WebSocketPort;
-            service.SendMessage = equipment.EquipmentAgreement.SendMessage;
+            CardService service = new CardService();
             return service;
         }
     }
