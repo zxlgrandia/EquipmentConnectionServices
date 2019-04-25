@@ -1,16 +1,16 @@
-﻿using System;
+﻿using Model;
+using ServicesFactory;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+using System.Threading;
 using System.Windows.Forms;
+using WebSocketSharp.Server;
 
 namespace WindowsFormsApplication1
 {
     public partial class MainServiceForm : Form
     {
+        private List<EquipmentModel> list = new List<EquipmentModel>();
         public MainServiceForm()
         {
             InitializeComponent();
@@ -19,6 +19,124 @@ namespace WindowsFormsApplication1
         private void toolStripButton_star_Click(object sender, EventArgs e)
         {
 
+            LoadEquipment();
+
+
+        }
+
+
+        /// <summary>
+        /// 温湿度传感器
+        /// </summary>
+        /// <returns></returns>
+        private EquipmentModel GetSensorEquipmentModel()
+        {
+            EquipmentAgreementModel am = new EquipmentAgreementModel
+            {
+                AgreementType = "sensor",
+                ConnectionEntry = "SensorService",
+                SendMessage = "ReadData1",
+                WebSocketIp = "ws://127.0.0.1",
+                WebSocketPort = 8087,
+            };
+
+            EquipmentModel em = new EquipmentModel
+            {
+                Name = "温湿度传感器",
+                Manufacturer = "山东瀛海",
+                Model = "20-1240-9",
+                ClientIp = "192.168.1.56",
+                ClientPort = 10006,
+                EquipmentAgreement = am
+            };
+
+            return em;
+        }
+
+        /// <summary>
+        /// 游标卡尺
+        /// </summary>
+        /// <returns></returns>
+        private EquipmentModel GetVernierEquipmentModel()
+        {
+            EquipmentAgreementModel am = new EquipmentAgreementModel
+            {
+                AgreementType = "vernier",
+                ConnectionEntry = "SensorService",
+                WebSocketIp = "ws://127.0.0.1",
+                WebSocketPort = 8089,
+                Bps = 9600,
+                EndPosition = 1,
+                DataBit = 8,
+                CheckPoint = "无",
+                Com = "COM3"
+            };
+
+            EquipmentModel em = new EquipmentModel
+            {
+                Name = "游标卡尺",
+                Manufacturer = "广陆制造",
+                Model = "201-31240-9",
+                EquipmentAgreement = am
+            };
+
+            return em;
+
+        }
+
+        private void StartWebSocket(EquipmentModel em)
+        {
+            string ws = em.EquipmentAgreement.WebSocketIp + ":" + em.EquipmentAgreement.WebSocketPort.ToString();
+            Console.WriteLine(ws);
+            WebSocketServer wssv = new WebSocketServer(ws);
+
+            switch (em.EquipmentAgreement.AgreementType)
+            {
+                case "vernier":
+                    wssv.AddWebSocketService<SensorEquipmentService>(
+                        "/SensorService",
+                        new Action<SensorEquipmentService>((s) => {
+                            s.IP = em.EquipmentAgreement.WebSocketIp;
+                            s.Port = em.EquipmentAgreement.WebSocketPort;
+                            s.SendMessage = em.EquipmentAgreement.SendMessage;
+                        }));
+                    wssv.Start();
+                    break;
+                case "sensor":
+                    wssv.AddWebSocketService<VernierCaliperService>(
+                       "/VernierCaliper",
+                       new Action<VernierCaliperService>((s) => {
+                           s.KC_BaudRate = em.EquipmentAgreement.Bps;
+                           s.KC_COMPort = em.EquipmentAgreement.Com;
+                           s.KC_DataBits = em.EquipmentAgreement.DataBit;
+                           s.KC_Paritv = em.EquipmentAgreement.CheckPoint;
+                           s.KC_StopBits = em.EquipmentAgreement.EndPosition;
+                           
+                       }));
+                    wssv.Start();
+                    break;
+                default:
+                    break;
+            }
+
+            
+        } 
+
+        private void LoadEquipment()
+        {
+            List<EquipmentModel> list = new List<EquipmentModel> {
+                this.GetSensorEquipmentModel(),
+                this.GetVernierEquipmentModel()
+            };
+            for (int i = 0; i < list.Count; i++)
+            {
+                var s = list[i];
+                new Thread(() =>
+                {
+                    this.StartWebSocket(s);
+                }).Start();
+
+            }
         }
 
         private void toolStripButton_set_Click(object sender, EventArgs e)

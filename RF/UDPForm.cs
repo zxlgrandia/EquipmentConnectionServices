@@ -14,6 +14,7 @@ using System.Net;
 using System.Threading;
 using WebSocketSharp.Server;
 using WebSocketSharp;
+using ServicesFactory;
 
 namespace WindowsFormsApplication1
 {
@@ -32,11 +33,13 @@ namespace WindowsFormsApplication1
         }
         private void StartWSServer()
         {
-            wssv = new WebSocketServer("ws://127.0.0.1:8087");
-            wssv.AddWebSocketService<SensorService>("/SensorService");
-            wssv.Start();
+            //wssv = new WebSocketServer("ws://127.0.0.1:8087");
+        
+            //wssv.AddWebSocketService<WebSocketServer>("/SensorService", () => new SensorEquipmentFactory().PublishService());
+            //wssv.Start();
         }
 
+        
         private void btnOpenUDP_Click(object sender, EventArgs e)
         {
             ConnectionConfig.Ip = txtServerIP.Text == String.Empty ? "127.0.0.1" : txtServerIP.Text;
@@ -103,11 +106,27 @@ namespace WindowsFormsApplication1
         private void bt_send_Click(object sender, EventArgs e)
         {
 
-        }
-
+        } 
         private void tsbtn_start_Click(object sender, EventArgs e)
         {
+            //ConnectionConfig.Ip = txtServerIP.Text == String.Empty ? "127.0.0.1" : txtServerIP.Text;
+            //ConnectionConfig.Port = txtServerPort.Text == String.Empty ? "10006" : txtServerPort.Text;
+            //ConnectionConfig.UDPCommand = txtSendMssg.Text == String.Empty ? "ReadData1" : txtSendMssg.Text;
+            //ConnectionConfig.IsUdpRecvStart = false;
+            //StartWSServer();
 
+            //lblStatus.Text = "数据监听已启动";
+
+
+
+            // 根据设备判断使用哪种工厂
+            //EquipmentFactory factory = new SensorEquipmentFactory();
+
+            //wssv = new WebSocketServer("ws://127.0.0.1:8087");
+            //wssv.AddWebSocketService<SensorEquipmentService>("/SensorService", () => new SensorEquipmentFactory().PublishService());
+            //wssv.Start();
+
+            // factory.PublishService();
         }
     }
 

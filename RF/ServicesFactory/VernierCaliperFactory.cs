@@ -9,7 +9,7 @@ using Utils;
 using WebSocketSharp;
 using WebSocketSharp.Server;
 
-namespace WindowsFormsApplication1.ServicesFactory
+namespace ServicesFactory
 {
     public class VernierCaliperFactory: EquipmentFactory
     {

@@ -83,6 +83,7 @@ namespace ServicesFactory
         protected override void OnMessage(MessageEventArgs e)
         {
             var msg = e.Data;
+            Console.WriteLine(msg);
             var message = StartListen();
             Send(message);
 

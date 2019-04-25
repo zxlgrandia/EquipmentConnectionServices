@@ -45,7 +45,7 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbtn_start = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStatusLbl = new System.Windows.Forms.ToolStripLabel();
             this.tsStatus = new System.Windows.Forms.ToolStripLabel();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -183,7 +183,7 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbtn_start,
             this.toolStripSeparator1,
-            this.toolStripLabel1,
+            this.toolStatusLbl,
             this.tsStatus});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -206,11 +206,11 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolStripLabel1
+            // toolStatusLbl
             // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(68, 22);
-            this.toolStripLabel1.Text = "服务状态：";
+            this.toolStatusLbl.Name = "toolStatusLbl";
+            this.toolStatusLbl.Size = new System.Drawing.Size(68, 22);
+            this.toolStatusLbl.Text = "服务状态：";
             // 
             // tsStatus
             // 
@@ -262,7 +262,7 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton tsbtn_start;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripLabel toolStatusLbl;
         private System.Windows.Forms.ToolStripLabel tsStatus;
     }
 }

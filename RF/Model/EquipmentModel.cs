@@ -29,6 +29,11 @@ namespace Model
         /// </summary>
         public string AgreementId { get; set; }
 
+        /// <summary>
+        /// 客户端端口
+        /// </summary>
+        public int ClientPort { get; set; }
+
         public EquipmentAgreementModel EquipmentAgreement { get; set; }
 
     }

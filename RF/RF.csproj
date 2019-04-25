@@ -112,12 +112,16 @@
     <Compile Include="ConfigForm.Designer.cs">
       <DependentUpon>ConfigForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DAL\EquipmentAgreementDAL.cs" />
+    <Compile Include="DAL\EquipmentDAL.cs" />
+    <Compile Include="DAL\EquipmentTypeDAL.cs" />
     <Compile Include="ElectronicScaleFormService.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ElectronicScaleFormService.Designer.cs">
       <DependentUpon>ElectronicScaleFormService.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\EquipmentAgreementModel.cs" />
     <Compile Include="GenericSingleton.cs" />
     <Compile Include="MainServiceForm.cs">
       <SubType>Form</SubType>
@@ -125,12 +129,18 @@
     <Compile Include="MainServiceForm.Designer.cs">
       <DependentUpon>MainServiceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\EquipmentModel.cs" />
+    <Compile Include="Model\EquipmentTypeModel.cs" />
     <Compile Include="SensorForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SensorForm.Designer.cs">
       <DependentUpon>SensorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ServicesFactory\CardFactory.cs" />
+    <Compile Include="ServicesFactory\ElectronicScaleFactory.cs" />
+    <Compile Include="ServicesFactory\EquipmentFactory.cs" />
+    <Compile Include="ServicesFactory\VernierCaliperFactory.cs" />
     <Compile Include="UDPForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +151,8 @@
     <Compile Include="Utils\HttpRequestUtil.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\ServiceLog.cs" />
+    <Compile Include="Utils\SQLHelper.cs" />
     <Compile Include="Utils\VisitedHelper.cs" />
     <Compile Include="VernierCaliperFormService.cs">
       <SubType>Form</SubType>
