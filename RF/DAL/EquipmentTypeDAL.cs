@@ -15,9 +15,9 @@ namespace DAL
         public static List<EquipmentTypeModel> GetEquipmentAgreementList(string clientIp)
         {
             var connectionString = ConfigurationManager.AppSettings["DbConnection"];
-            var sqlString = "SELECT * FROM SYS_Equipment WHERE  Client_Ip = @ClientIp";
+            var sqlString = "SELECT * FROM sys_Equipment_Type ";
             SqlParameter[] sqlParams = new SqlParameter[] {
-                new SqlParameter("@ClientIp", clientIp)
+               // new SqlParameter("@ClientIp", clientIp)
             };
             List<EquipmentTypeModel> list = new List<EquipmentTypeModel>();
             SqlDataReader reader = SqlHelper.ExecuteReader(connectionString, CommandType.Text, sqlString, sqlParams);
