@@ -29,7 +29,7 @@ namespace Utils
                 if (!Directory.Exists(path))
                     Directory.CreateDirectory(path);
 
-                string fileFullPath = path + time.ToString("yyyy-MM-dd") + "_"+serviceName+".txt";
+                string fileFullPath = path + time.ToString("yyyy-MM-dd") + "_" + serviceName + ".txt";
                 StringBuilder str = new StringBuilder();
                 str.Append("时间:    " + time.ToString() + "\r\n");
                 str.Append("操作:  " + action + "\r\n");

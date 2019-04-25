@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Forms;
+using Utils;
 using WebSocketSharp.Server;
 
 namespace WindowsFormsApplication1
@@ -18,7 +19,7 @@ namespace WindowsFormsApplication1
 
         private void toolStripButton_star_Click(object sender, EventArgs e)
         {
-
+            
             LoadEquipment();
 
 
@@ -62,14 +63,14 @@ namespace WindowsFormsApplication1
             EquipmentAgreementModel am = new EquipmentAgreementModel
             {
                 AgreementType = "vernier",
-                ConnectionEntry = "SensorService",
+                ConnectionEntry = "VernierCaliperService",
                 WebSocketIp = "ws://127.0.0.1",
-                WebSocketPort = 8089,
+                WebSocketPort = 8086,
                 Bps = 9600,
                 EndPosition = 1,
                 DataBit = 8,
                 CheckPoint = "无",
-                Com = "COM3"
+                Com = "COM4"
             };
 
             EquipmentModel em = new EquipmentModel
@@ -92,7 +93,7 @@ namespace WindowsFormsApplication1
 
             switch (em.EquipmentAgreement.AgreementType)
             {
-                case "vernier":
+                case "sensor":
                     wssv.AddWebSocketService<SensorEquipmentService>(
                         "/SensorService",
                         new Action<SensorEquipmentService>((s) => {
@@ -102,7 +103,7 @@ namespace WindowsFormsApplication1
                         }));
                     wssv.Start();
                     break;
-                case "sensor":
+                case "vernier":
                     wssv.AddWebSocketService<VernierCaliperService>(
                        "/VernierCaliper",
                        new Action<VernierCaliperService>((s) => {
@@ -111,8 +112,9 @@ namespace WindowsFormsApplication1
                            s.KC_DataBits = em.EquipmentAgreement.DataBit;
                            s.KC_Paritv = em.EquipmentAgreement.CheckPoint;
                            s.KC_StopBits = em.EquipmentAgreement.EndPosition;
-                           
+                          // s.OpenCom();
                        }));
+                    Console.WriteLine("执行vernier" );
                     wssv.Start();
                     break;
                 default:
@@ -130,10 +132,15 @@ namespace WindowsFormsApplication1
             };
             for (int i = 0; i < list.Count; i++)
             {
-                var s = list[i];
+                var si = i;
+                var s = list[si];
+                //  Console.WriteLine("执行" + si.ToString());
+                //  StartWebSocket(s);
                 new Thread(() =>
                 {
+                    Console.WriteLine("执行" + si.ToString());
                     this.StartWebSocket(s);
+
                 }).Start();
 
             }

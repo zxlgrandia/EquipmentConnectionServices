@@ -165,14 +165,14 @@ namespace WindowsFormsApplication1.ServicesFactory
 
             void sp_DataReceived(object sender, SerialDataReceivedEventArgs e)
             {
-                System.Threading.Thread.Sleep(50);     //延时100ms等待接收数据
+                System.Threading.Thread.Sleep(100);     //延时100ms等待接收数据
 
                 if (isHex == false)
                 {
                     
                     string rs = sp.ReadLine();
                     ChengValue.d = rs;
-                    ServiceLog.WriteServiceLog(ServiceLog.ES_SERVICE, "读取数据：" + rs, "", DateTime.Now);
+                    ServiceLog.WriteServiceLog(ServiceLog.ES_SERVICE, "读取数据：" , "rs", DateTime.Now);
                    
 
                 }
@@ -215,7 +215,7 @@ namespace WindowsFormsApplication1.ServicesFactory
 
         protected override void OnClose(CloseEventArgs e)
         {
-            CloseCom();
+          //  CloseCom();
             ServiceLog.WriteServiceLog(ServiceLog.HT_SERVICE, "连接关闭", "", DateTime.Now);
             base.OnClose(e);
         }
@@ -228,6 +228,10 @@ namespace WindowsFormsApplication1.ServicesFactory
 
         protected override void OnMessage(MessageEventArgs e)
         {
+            if (isOpen == false)
+            {
+                OpenCom();
+            }
             var msg = e.Data;
             var message = ReadCard();
             Send(message);
@@ -238,7 +242,7 @@ namespace WindowsFormsApplication1.ServicesFactory
 
         protected override void OnOpen()
         {
-            OpenCom();
+           // OpenCom();
             ServiceLog.WriteServiceLog(ServiceLog.HT_SERVICE, "打开连接", "成功", DateTime.Now);
             base.OnOpen();
         }

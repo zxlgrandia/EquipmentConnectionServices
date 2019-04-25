@@ -28,6 +28,7 @@ namespace ServicesFactory
 
     public class VernierCaliperService : WebSocketBehavior
     {
+  
         public string KC_COMPort { get; set; }
         public string KC_Paritv { get; set; }
         public int KC_BaudRate { get; set; }
@@ -42,7 +43,7 @@ namespace ServicesFactory
         /// <summary>
         /// 打开串口
         /// </summary>
-        private void OpenCom()
+        public void OpenCom()
         {
             if (isOpen == true)
             {
@@ -91,7 +92,7 @@ namespace ServicesFactory
         /// <summary>
         /// 关闭串口
         /// </summary>
-        private void CloseCom()
+        public void CloseCom()
         {
             try       //关闭串口       
             {
@@ -175,7 +176,7 @@ namespace ServicesFactory
                     {
 
                         rs = rs.Substring(1, rs.Length - 1);
-                        ServiceLog.WriteServiceLog(ServiceLog.VC_SERVICE, "读取数据："+ rs, "", DateTime.Now);
+                        ServiceLog.WriteServiceLog(ServiceLog.VC_SERVICE, "读取数据：" , "rs", DateTime.Now);
                         KachiValue.d = rs;
 
                     }
@@ -220,7 +221,7 @@ namespace ServicesFactory
 
         protected override void OnClose(CloseEventArgs e)
         {
-            CloseCom();
+           // CloseCom();
             ServiceLog.WriteServiceLog(ServiceLog.HT_SERVICE, "连接关闭", "", DateTime.Now);
             base.OnClose(e);
         }
@@ -233,6 +234,10 @@ namespace ServicesFactory
 
         protected override void OnMessage(MessageEventArgs e)
         {
+            if (isOpen == false) {
+                OpenCom();
+            }
+          
             var msg = e.Data;
             var message = ReadCard();
             Send(message);
@@ -243,7 +248,7 @@ namespace ServicesFactory
 
         protected override void OnOpen()
         {
-            OpenCom();
+            // OpenCom();
             ServiceLog.WriteServiceLog(ServiceLog.HT_SERVICE, "打开连接", "成功", DateTime.Now);
             base.OnOpen();
         }
