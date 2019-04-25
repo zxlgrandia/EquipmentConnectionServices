@@ -20,7 +20,7 @@ namespace WindowsFormsApplication1
         private void toolStripButton_star_Click(object sender, EventArgs e)
         {
             
-            LoadEquipment();
+           LoadEquipment();
 
 
         }
@@ -85,6 +85,37 @@ namespace WindowsFormsApplication1
 
         }
 
+        /// <summary>
+        /// 游标卡尺
+        /// </summary>
+        /// <returns></returns>
+        private EquipmentModel GetElectronicScaleEquipmentModel()
+        {
+            EquipmentAgreementModel am = new EquipmentAgreementModel
+            {
+                AgreementType = "electronicScale",
+                ConnectionEntry = "ElectronicScale",
+                WebSocketIp = "ws://127.0.0.1",
+                WebSocketPort = 8087,
+                Bps = 9600,
+                EndPosition = 1,
+                DataBit = 8,
+                CheckPoint = "无",
+                Com = "COM1"
+            };
+
+            EquipmentModel em = new EquipmentModel
+            {
+                Name = "游标卡尺",
+                Manufacturer = "广陆制造",
+                Model = "201-31240-9",
+                EquipmentAgreement = am
+            };
+
+            return em;
+
+        }
+
         private void StartWebSocket(EquipmentModel em)
         {
             string ws = em.EquipmentAgreement.WebSocketIp + ":" + em.EquipmentAgreement.WebSocketPort.ToString();
@@ -114,7 +145,18 @@ namespace WindowsFormsApplication1
                            s.KC_StopBits = em.EquipmentAgreement.EndPosition;
                           // s.OpenCom();
                        }));
-                    Console.WriteLine("执行vernier" );
+                    wssv.Start();
+                    break;
+                case "electronicScale":
+                    wssv.AddWebSocketService<ElectronicScaleService>(
+                       "/ElectronicScale",
+                       new Action<ElectronicScaleService>((s) => {
+                           s.KC_BaudRate = em.EquipmentAgreement.Bps;
+                           s.KC_COMPort = em.EquipmentAgreement.Com;
+                           s.KC_DataBits = em.EquipmentAgreement.DataBit;
+                           s.KC_Paritv = em.EquipmentAgreement.CheckPoint;
+                           s.KC_StopBits = em.EquipmentAgreement.EndPosition;
+                       }));
                     wssv.Start();
                     break;
                 default:
@@ -128,7 +170,8 @@ namespace WindowsFormsApplication1
         {
             List<EquipmentModel> list = new List<EquipmentModel> {
                 this.GetSensorEquipmentModel(),
-                this.GetVernierEquipmentModel()
+                this.GetVernierEquipmentModel(),
+                this.GetElectronicScaleEquipmentModel()
             };
             for (int i = 0; i < list.Count; i++)
             {

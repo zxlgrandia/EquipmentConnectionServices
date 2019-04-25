@@ -9,7 +9,7 @@ using Utils;
 using WebSocketSharp;
 using WebSocketSharp.Server;
 
-namespace WindowsFormsApplication1.ServicesFactory
+namespace ServicesFactory
 {
     public class ElectronicScaleFactory : EquipmentFactory
     {
@@ -210,7 +210,7 @@ namespace WindowsFormsApplication1.ServicesFactory
         // 只读
         public string ReadCard()
         {
-            return KachiValue.d;
+            return ChengValue.d;
         }
 
         protected override void OnClose(CloseEventArgs e)
@@ -235,6 +235,7 @@ namespace WindowsFormsApplication1.ServicesFactory
             var msg = e.Data;
             var message = ReadCard();
             Send(message);
+            Console.WriteLine(message);
 
             ServiceLog.WriteServiceLog(ServiceLog.HT_SERVICE, "发送数据：", message, DateTime.Now);
 
