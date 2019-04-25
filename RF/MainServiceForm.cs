@@ -65,7 +65,7 @@ namespace WindowsFormsApplication1
                 AgreementType = "vernier",
                 ConnectionEntry = "VernierCaliperService",
                 WebSocketIp = "ws://127.0.0.1",
-                WebSocketPort = 8086,
+                WebSocketPort = 8089,
                 Bps = 9600,
                 EndPosition = 1,
                 DataBit = 8,
@@ -96,7 +96,7 @@ namespace WindowsFormsApplication1
                 AgreementType = "electronicScale",
                 ConnectionEntry = "ElectronicScale",
                 WebSocketIp = "ws://127.0.0.1",
-                WebSocketPort = 8087,
+                WebSocketPort = 8088,
                 Bps = 9600,
                 EndPosition = 1,
                 DataBit = 8,
@@ -106,8 +106,8 @@ namespace WindowsFormsApplication1
 
             EquipmentModel em = new EquipmentModel
             {
-                Name = "游标卡尺",
-                Manufacturer = "广陆制造",
+                Name = "电子秤",
+                Manufacturer = "moxa",
                 Model = "201-31240-9",
                 EquipmentAgreement = am
             };
