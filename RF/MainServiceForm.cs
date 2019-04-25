@@ -86,7 +86,7 @@ namespace WindowsFormsApplication1
         }
 
         /// <summary>
-        /// 游标卡尺
+        /// 电子称
         /// </summary>
         /// <returns></returns>
         private EquipmentModel GetElectronicScaleEquipmentModel()
@@ -94,9 +94,9 @@ namespace WindowsFormsApplication1
             EquipmentAgreementModel am = new EquipmentAgreementModel
             {
                 AgreementType = "electronicScale",
-                ConnectionEntry = "ElectronicScale",
+                ConnectionEntry = "ElectronicScaleService",
                 WebSocketIp = "ws://127.0.0.1",
-                WebSocketPort = 8088,
+                WebSocketPort = 8099,
                 Bps = 9600,
                 EndPosition = 1,
                 DataBit = 8,
@@ -148,6 +148,7 @@ namespace WindowsFormsApplication1
                     wssv.Start();
                     break;
                 case "electronicScale":
+                    Console.WriteLine("执行electronicScale");
                     wssv.AddWebSocketService<ElectronicScaleService>(
                        "/ElectronicScale",
                        new Action<ElectronicScaleService>((s) => {

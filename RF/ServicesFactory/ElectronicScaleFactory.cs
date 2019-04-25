@@ -165,14 +165,16 @@ namespace ServicesFactory
 
             void sp_DataReceived(object sender, SerialDataReceivedEventArgs e)
             {
-                System.Threading.Thread.Sleep(100);     //延时100ms等待接收数据
+              
+                System.Threading.Thread.Sleep(50);     //延时100ms等待接收数据
 
                 if (isHex == false)
                 {
                     
-                    string rs = sp.ReadLine();
+                   // string rs = sp.ReadLine();
+                    string rs = sp.ReadExisting();
                     ChengValue.d = rs;
-                    ServiceLog.WriteServiceLog(ServiceLog.ES_SERVICE, "读取数据：" , "rs", DateTime.Now);
+                    ServiceLog.WriteServiceLog(ServiceLog.ES_SERVICE, "读取数据：" , rs, DateTime.Now);
                    
 
                 }

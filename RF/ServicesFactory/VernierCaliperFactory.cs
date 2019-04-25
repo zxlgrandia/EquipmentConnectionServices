@@ -176,7 +176,7 @@ namespace ServicesFactory
                     {
 
                         rs = rs.Substring(1, rs.Length - 1);
-                        ServiceLog.WriteServiceLog(ServiceLog.VC_SERVICE, "读取数据：" , "rs", DateTime.Now);
+                        ServiceLog.WriteServiceLog(ServiceLog.VC_SERVICE, "读取数据：" , rs, DateTime.Now);
                         KachiValue.d = rs;
 
                     }
