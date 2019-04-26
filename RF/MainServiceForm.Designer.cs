@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainServiceForm));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnStartServer = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_star = new System.Windows.Forms.ToolStripDropDownButton();
             this.ToolStripMenuItem_Card = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_ElectronicScale = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,7 +40,6 @@
             this.toolStripButton_about = new System.Windows.Forms.ToolStripButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.btnStartServer = new System.Windows.Forms.ToolStripButton();
             this.lsMessage = new System.Windows.Forms.ListBox();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -59,8 +59,18 @@
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // btnStartServer
+            // 
+            this.btnStartServer.Image = ((System.Drawing.Image)(resources.GetObject("btnStartServer.Image")));
+            this.btnStartServer.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnStartServer.Name = "btnStartServer";
+            this.btnStartServer.Size = new System.Drawing.Size(100, 22);
+            this.btnStartServer.Text = "启动设备服务";
+            this.btnStartServer.Click += new System.EventHandler(this.btnStartServer_Click);
+            // 
             // toolStripButton_star
             // 
+            this.toolStripButton_star.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.None;
             this.toolStripButton_star.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItem_Card,
             this.ToolStripMenuItem_ElectronicScale,
@@ -69,7 +79,7 @@
             this.toolStripButton_star.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_star.Image")));
             this.toolStripButton_star.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton_star.Name = "toolStripButton_star";
-            this.toolStripButton_star.Size = new System.Drawing.Size(85, 22);
+            this.toolStripButton_star.Size = new System.Drawing.Size(13, 22);
             this.toolStripButton_star.Text = "服务测试";
             this.toolStripButton_star.Click += new System.EventHandler(this.toolStripButton_star_Click);
             // 
@@ -103,10 +113,11 @@
             // 
             // toolStripButton_set
             // 
+            this.toolStripButton_set.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.None;
             this.toolStripButton_set.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_set.Image")));
             this.toolStripButton_set.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton_set.Name = "toolStripButton_set";
-            this.toolStripButton_set.Size = new System.Drawing.Size(76, 22);
+            this.toolStripButton_set.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton_set.Text = "服务设置";
             this.toolStripButton_set.Click += new System.EventHandler(this.toolStripButton_set_Click);
             // 
@@ -138,15 +149,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "服务信息";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // btnStartServer
-            // 
-            this.btnStartServer.Image = ((System.Drawing.Image)(resources.GetObject("btnStartServer.Image")));
-            this.btnStartServer.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnStartServer.Name = "btnStartServer";
-            this.btnStartServer.Size = new System.Drawing.Size(100, 22);
-            this.btnStartServer.Text = "启动设备服务";
-            this.btnStartServer.Click += new System.EventHandler(this.btnStartServer_Click);
             // 
             // lsMessage
             // 

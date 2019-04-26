@@ -25,13 +25,13 @@ namespace DAL
             {
                 EquipmentModel e = new EquipmentModel
                 {
-                    
-                    Name = reader.IsDBNull(0) ? string.Empty : reader.GetString(0),
-                    Manufacturer = reader.IsDBNull(1) ? string.Empty : reader.GetString(1),
-                    Model = reader.IsDBNull(2) ? string.Empty : reader.GetString(2),
-                    ClientIp = reader.IsDBNull(3) ? string.Empty : reader.GetString(3),
-                    AgreementId = reader.IsDBNull(4) ? string.Empty : reader.GetString(4),
-                    Id = reader.IsDBNull(5) ? string.Empty : reader.GetString(5)
+
+                    Name = reader.IsDBNull(0) ? string.Empty : reader["NAME"].ToString(),
+                    Manufacturer = reader.IsDBNull(1) ? string.Empty : reader["MANUFACTURER"].ToString(),
+                    Model = reader.IsDBNull(2) ? string.Empty : reader["MODEL"].ToString(),
+                    ClientIp = reader.IsDBNull(3) ? string.Empty : reader["CLIENT_IP"].ToString(),
+                    AgreementId = reader.IsDBNull(4) ? string.Empty : reader["AGREEMENT_ID"].ToString(),
+                    Id = reader.IsDBNull(5) ? string.Empty : reader["ID"].ToString()
 
                 };
                 list.Add(e);

@@ -21,24 +21,24 @@ namespace DAL
             };
             List<EquipmentAgreementModel> list = new List<EquipmentAgreementModel>();
             SqlDataReader reader = SqlHelper.ExecuteReader(connectionString, CommandType.Text, sqlString, sqlParams);
-            while(reader.Read())
+            while (reader.Read())
             {
                 EquipmentAgreementModel e = new EquipmentAgreementModel();
-                e.AgreementType = reader.IsDBNull(0) ? string.Empty : reader.GetString(0);
-                e.EquipmentIp = reader.IsDBNull(1) ? string.Empty : reader.GetString(1);
-                e.EquipmentPort = reader.IsDBNull(2) ? string.Empty : reader.GetString(2);
-                e.SendMessage = reader.IsDBNull(3) ? string.Empty : reader.GetString(3);
-                e.WebSocketIp = reader.IsDBNull(4) ? string.Empty : reader.GetString(4);
-                e.WebSocketPort = reader.IsDBNull(5) ? string.Empty : reader.GetString(5);
-                e.ConnectionEntry = reader.IsDBNull(6) ? string.Empty : reader.GetString(6);
-                e.Com = reader.IsDBNull(7) ? string.Empty : reader.GetString(7);
-                e.Bps = reader.IsDBNull(8) ? 0 : reader.GetInt32(8);
-                e.EndPosition = reader.IsDBNull(9) ? 0 : reader.GetInt32(9);
-                e.CheckPoint = reader.IsDBNull(10) ? string.Empty : reader.GetString(10);
-                e.DataBit = reader.IsDBNull(11) ? 0 : reader.GetInt32(11);
-                e.GatherType = reader.IsDBNull(12) ? 0 : reader.GetInt32(12);
-                e.UploadPath = reader.IsDBNull(13) ? string.Empty : (string)reader.GetValue(13);
-                e.Id = reader.IsDBNull(14) ? string.Empty : (string)reader.GetValue(14);
+                e.AgreementType =   System.DBNull.Value == reader["AGREEMENT_TYPE"]  ? string.Empty : reader["AGREEMENT_TYPE"].ToString();
+                e.EquipmentIp =     System.DBNull.Value == reader["EQUIPMENT_IP"]    ? string.Empty : reader["EQUIPMENT_IP"].ToString();
+                e.EquipmentPort =   System.DBNull.Value == reader["EQUIPMENT_PORT"]  ? string.Empty : reader["EQUIPMENT_PORT"].ToString();
+                e.SendMessage =     System.DBNull.Value == reader["SEND_MESSAGE"]    ? string.Empty : reader["SEND_MESSAGE"].ToString();
+                e.WebSocketIp =     System.DBNull.Value == reader["WEB_SOCKET_IP"]   ? string.Empty : reader["WEB_SOCKET_IP"].ToString();
+                e.WebSocketPort =   System.DBNull.Value == reader["WEB_SOCKET_PORT"] ? string.Empty : reader["WEB_SOCKET_PORT"].ToString();
+                e.ConnectionEntry = System.DBNull.Value == reader["CONN_ENTRY"]      ? string.Empty : reader["CONN_ENTRY"].ToString();
+                e.Com =             System.DBNull.Value == reader["COM"]             ? string.Empty : reader["COM"].ToString();
+                e.Bps =             System.DBNull.Value == reader["BPS"]             ? 0            : (int)reader["BPS"];
+                e.EndPosition =     System.DBNull.Value == reader["STOP_BIT"]        ? 0            : (int)reader["STOP_BIT"];
+                e.CheckPoint =      System.DBNull.Value == reader["CHECK_POINT"]     ? string.Empty : reader["CHECK_POINT"].ToString();
+                e.DataBit =         System.DBNull.Value == reader["DATA_BIT"]        ? 0            : (int)reader["DATA_BIT"];
+                e.GatherType =      System.DBNull.Value == reader["GATHER_TYPE"]     ? 0            : (int)reader["GATHER_TYPE"];
+                e.UploadPath =      System.DBNull.Value == reader["UPLOAD_PATH"]     ? string.Empty : reader["UPLOAD_PATH"].ToString();
+                e.Id =              System.DBNull.Value == reader["ID"]              ? string.Empty : reader["ID"].ToString();
                 list.Add(e);
             }
             reader.Close();
