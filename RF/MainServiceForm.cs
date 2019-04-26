@@ -4,6 +4,7 @@ using ServicesFactory;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Net;
 using System.Threading;
 using System.Windows.Forms;
 using Utils;
@@ -124,7 +125,7 @@ namespace WindowsFormsApplication1
 
             switch (em.EquipmentAgreement.AgreementType)
             {
-                case "sensor":
+                case "SensorService":
                     wssv.AddWebSocketService<SensorEquipmentService>(
                         "/SensorService",
                         new Action<SensorEquipmentService>((s) => {
@@ -136,7 +137,7 @@ namespace WindowsFormsApplication1
 
                     //lsMessage.Items.Add("温湿度传感器服务开启");
                     break;
-                case "vernier":
+                case "VernierCaliper":
                     wssv.AddWebSocketService<VernierCaliperService>(
                        "/VernierCaliper",
                        new Action<VernierCaliperService>((s) => {
@@ -165,7 +166,7 @@ namespace WindowsFormsApplication1
 
                    // lsMessage.Items.Add("电子秤服务开启");
                     break;
-                case "card":
+                case "Card":
                     wssv.AddWebSocketService<CardService>("/Laputa");
                     wssv.Start();
                     //lsMessage.Items.Add("刷卡服务开启");
@@ -181,7 +182,12 @@ namespace WindowsFormsApplication1
         {
             lsMessage.Items.Add("设备侦测中...,请稍后");
             // 访问数据库读取所有设备信息
-            List<EquipmentModel> equipmentList = EquipmentDAL.GetEquipmentList(ConfigurationManager.AppSettings["CLIENT_IP"]);
+            string hostName = Dns.GetHostName();   //获取本机名
+            IPHostEntry localhost = Dns.GetHostByName(hostName);    //可以获取IPv4的地址
+                                                                    //IPHostEntry localhost = Dns.GetHostEntry(hostName);   //获取IPv6地址
+            IPAddress localaddr = localhost.AddressList[0];
+
+            List<EquipmentModel> equipmentList = EquipmentDAL.GetEquipmentList(localaddr.ToString());
             equipmentList.ForEach(item =>
             {
                 List<EquipmentAgreementModel> agreementList = EquipmentAgreementDAL.GetEquipmentAgreementList(item.AgreementId);
