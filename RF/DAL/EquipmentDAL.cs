@@ -12,7 +12,7 @@ namespace DAL
 {
     public class EquipmentDAL
     {
-        public static List<EquipmentModel> GetEquipmentAgreementList(string clientIp)
+        public static List<EquipmentModel> GetEquipmentList(string clientIp)
         {
             var connectionString = ConfigurationManager.AppSettings["DbConnection"];
             var sqlString = "SELECT * FROM SYS_Equipment WHERE  Client_Ip = @ClientIp";
@@ -26,12 +26,12 @@ namespace DAL
                 EquipmentModel e = new EquipmentModel
                 {
                     
-                    Name = reader.GetString(0),
-                    Manufacturer = reader.GetString(1),
-                    Model = reader.GetString(2),
-                    ClientIp = reader.GetString(3),
-                    AgreementId = reader.GetString(4),
-                    Id = reader.GetString(5),
+                    Name = reader.IsDBNull(0) ? string.Empty : reader.GetString(0),
+                    Manufacturer = reader.IsDBNull(1) ? string.Empty : reader.GetString(1),
+                    Model = reader.IsDBNull(2) ? string.Empty : reader.GetString(2),
+                    ClientIp = reader.IsDBNull(3) ? string.Empty : reader.GetString(3),
+                    AgreementId = reader.IsDBNull(4) ? string.Empty : reader.GetString(4),
+                    Id = reader.IsDBNull(5) ? string.Empty : reader.GetString(5)
 
                 };
                 list.Add(e);

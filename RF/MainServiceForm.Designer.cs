@@ -34,18 +34,22 @@
             this.ToolStripMenuItem_Card = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_ElectronicScale = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Sensor = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_VernierCaliper = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButton_set = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_about = new System.Windows.Forms.ToolStripButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.ToolStripMenuItem_VernierCaliper = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnStartServer = new System.Windows.Forms.ToolStripButton();
+            this.lsMessage = new System.Windows.Forms.ListBox();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnStartServer,
             this.toolStripButton_star,
             this.toolStripButton_set,
             this.toolStripButton_about});
@@ -66,7 +70,7 @@
             this.toolStripButton_star.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton_star.Name = "toolStripButton_star";
             this.toolStripButton_star.Size = new System.Drawing.Size(85, 22);
-            this.toolStripButton_star.Text = "服务启动";
+            this.toolStripButton_star.Text = "服务测试";
             this.toolStripButton_star.Click += new System.EventHandler(this.toolStripButton_star_Click);
             // 
             // ToolStripMenuItem_Card
@@ -89,6 +93,13 @@
             this.ToolStripMenuItem_Sensor.Size = new System.Drawing.Size(180, 22);
             this.ToolStripMenuItem_Sensor.Text = "温湿度传感器服务";
             this.ToolStripMenuItem_Sensor.Click += new System.EventHandler(this.ToolStripMenuItem_Sensor_Click);
+            // 
+            // ToolStripMenuItem_VernierCaliper
+            // 
+            this.ToolStripMenuItem_VernierCaliper.Name = "ToolStripMenuItem_VernierCaliper";
+            this.ToolStripMenuItem_VernierCaliper.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_VernierCaliper.Text = "游标卡尺服务";
+            this.ToolStripMenuItem_VernierCaliper.Click += new System.EventHandler(this.ToolStripMenuItem_VernierCaliper_Click);
             // 
             // toolStripButton_set
             // 
@@ -119,6 +130,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.lsMessage);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -127,12 +139,26 @@
             this.tabPage1.Text = "服务信息";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // ToolStripMenuItem_VernierCaliper
+            // btnStartServer
             // 
-            this.ToolStripMenuItem_VernierCaliper.Name = "ToolStripMenuItem_VernierCaliper";
-            this.ToolStripMenuItem_VernierCaliper.Size = new System.Drawing.Size(180, 22);
-            this.ToolStripMenuItem_VernierCaliper.Text = "游标卡尺服务";
-            this.ToolStripMenuItem_VernierCaliper.Click += new System.EventHandler(this.ToolStripMenuItem_VernierCaliper_Click);
+            this.btnStartServer.Image = ((System.Drawing.Image)(resources.GetObject("btnStartServer.Image")));
+            this.btnStartServer.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnStartServer.Name = "btnStartServer";
+            this.btnStartServer.Size = new System.Drawing.Size(100, 22);
+            this.btnStartServer.Text = "启动设备服务";
+            this.btnStartServer.Click += new System.EventHandler(this.btnStartServer_Click);
+            // 
+            // lsMessage
+            // 
+            this.lsMessage.FormattingEnabled = true;
+            this.lsMessage.ItemHeight = 12;
+            this.lsMessage.Items.AddRange(new object[] {
+            "等待服务开启......"});
+            this.lsMessage.Location = new System.Drawing.Point(6, 6);
+            this.lsMessage.Name = "lsMessage";
+            this.lsMessage.Size = new System.Drawing.Size(756, 376);
+            this.lsMessage.TabIndex = 0;
+            this.lsMessage.SelectedIndexChanged += new System.EventHandler(this.lsMessage_SelectedIndexChanged);
             // 
             // MainServiceForm
             // 
@@ -146,6 +172,7 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,5 +190,7 @@
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Sensor;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_ElectronicScale;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_VernierCaliper;
+        private System.Windows.Forms.ToolStripButton btnStartServer;
+        private System.Windows.Forms.ListBox lsMessage;
     }
 }

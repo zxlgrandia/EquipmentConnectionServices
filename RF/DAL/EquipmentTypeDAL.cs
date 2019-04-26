@@ -12,7 +12,7 @@ namespace DAL
 {
     public class EquipmentTypeDAL
     {
-        public static List<EquipmentTypeModel> GetEquipmentAgreementList(string clientIp)
+        public static List<EquipmentTypeModel> GetEquipmentAgreementList()
         {
             var connectionString = ConfigurationManager.AppSettings["DbConnection"];
             var sqlString = "SELECT * FROM sys_Equipment_Type ";

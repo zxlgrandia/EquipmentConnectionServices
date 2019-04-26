@@ -1,7 +1,9 @@
-﻿using Model;
+﻿using DAL;
+using Model;
 using ServicesFactory;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Threading;
 using System.Windows.Forms;
 using Utils;
@@ -19,10 +21,7 @@ namespace WindowsFormsApplication1
 
         private void toolStripButton_star_Click(object sender, EventArgs e)
         {
-            
-           LoadEquipment();
-
-
+           
         }
 
 
@@ -38,7 +37,9 @@ namespace WindowsFormsApplication1
                 ConnectionEntry = "SensorService",
                 SendMessage = "ReadData1",
                 WebSocketIp = "ws://127.0.0.1",
-                WebSocketPort = 8087,
+                WebSocketPort = "8087",
+                EquipmentIp = "192.168.1.56",
+                EquipmentPort = "10006"
             };
 
             EquipmentModel em = new EquipmentModel
@@ -65,7 +66,7 @@ namespace WindowsFormsApplication1
                 AgreementType = "vernier",
                 ConnectionEntry = "VernierCaliperService",
                 WebSocketIp = "ws://127.0.0.1",
-                WebSocketPort = 8089,
+                WebSocketPort = "8089",
                 Bps = 9600,
                 EndPosition = 1,
                 DataBit = 8,
@@ -96,7 +97,7 @@ namespace WindowsFormsApplication1
                 AgreementType = "electronicScale",
                 ConnectionEntry = "ElectronicScaleService",
                 WebSocketIp = "ws://127.0.0.1",
-                WebSocketPort = 8099,
+                WebSocketPort = "8099",
                 Bps = 9600,
                 EndPosition = 1,
                 DataBit = 8,
@@ -118,8 +119,7 @@ namespace WindowsFormsApplication1
 
         private void StartWebSocket(EquipmentModel em)
         {
-            string ws = em.EquipmentAgreement.WebSocketIp + ":" + em.EquipmentAgreement.WebSocketPort.ToString();
-            Console.WriteLine(ws);
+            string ws = "ws://" + em.EquipmentAgreement.WebSocketIp + ":" + em.EquipmentAgreement.WebSocketPort;
             WebSocketServer wssv = new WebSocketServer(ws);
 
             switch (em.EquipmentAgreement.AgreementType)
@@ -133,6 +133,8 @@ namespace WindowsFormsApplication1
                             s.SendMessage = em.EquipmentAgreement.SendMessage;
                         }));
                     wssv.Start();
+
+                    //lsMessage.Items.Add("温湿度传感器服务开启");
                     break;
                 case "vernier":
                     wssv.AddWebSocketService<VernierCaliperService>(
@@ -146,9 +148,10 @@ namespace WindowsFormsApplication1
                           // s.OpenCom();
                        }));
                     wssv.Start();
+
+                    //lsMessage.Items.Add("游标卡尺服务开启");
                     break;
-                case "electronicScale":
-                    Console.WriteLine("执行electronicScale");
+                case "ElectronicScale":
                     wssv.AddWebSocketService<ElectronicScaleService>(
                        "/ElectronicScale",
                        new Action<ElectronicScaleService>((s) => {
@@ -159,6 +162,13 @@ namespace WindowsFormsApplication1
                            s.KC_StopBits = em.EquipmentAgreement.EndPosition;
                        }));
                     wssv.Start();
+
+                   // lsMessage.Items.Add("电子秤服务开启");
+                    break;
+                case "card":
+                    wssv.AddWebSocketService<CardService>("/Laputa");
+                    wssv.Start();
+                    //lsMessage.Items.Add("刷卡服务开启");
                     break;
                 default:
                     break;
@@ -169,17 +179,31 @@ namespace WindowsFormsApplication1
 
         private void LoadEquipment()
         {
-            List<EquipmentModel> list = new List<EquipmentModel> {
-                this.GetSensorEquipmentModel(),
-                this.GetVernierEquipmentModel(),
-                this.GetElectronicScaleEquipmentModel()
-            };
-            for (int i = 0; i < list.Count; i++)
+            lsMessage.Items.Add("设备侦测中...,请稍后");
+            // 访问数据库读取所有设备信息
+            List<EquipmentModel> equipmentList = EquipmentDAL.GetEquipmentList(ConfigurationManager.AppSettings["CLIENT_IP"]);
+            equipmentList.ForEach(item =>
+            {
+                List<EquipmentAgreementModel> agreementList = EquipmentAgreementDAL.GetEquipmentAgreementList(item.AgreementId);
+                item.EquipmentAgreement = agreementList[0];
+            });
+
+            lsMessage.Items.Add("设备侦测结束,发现" + equipmentList.Count + "台设备与当前主机匹配");
+
+            // 根据设备信息读取设备协议内容
+            // 循环遍历设备，初始化服务
+            //List<EquipmentModel> list = new List<EquipmentModel> {
+            //    this.GetSensorEquipmentModel(),
+            //    this.GetVernierEquipmentModel(),
+            //    this.GetElectronicScaleEquipmentModel()
+            //};
+
+            lsMessage.Items.Add("设备连接中...,请稍后");
+
+            for (int i = 0; i < equipmentList.Count; i++)
             {
                 var si = i;
-                var s = list[si];
-                //  Console.WriteLine("执行" + si.ToString());
-                //  StartWebSocket(s);
+                var s = equipmentList[si];
                 new Thread(() =>
                 {
                     Console.WriteLine("执行" + si.ToString());
@@ -371,6 +395,16 @@ namespace WindowsFormsApplication1
                     tabControl1.Controls.Add(Page);
                 }
             }
+        }
+
+        private void btnStartServer_Click(object sender, EventArgs e)
+        {
+            LoadEquipment();
+        }
+
+        private void lsMessage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

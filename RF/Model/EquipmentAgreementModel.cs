@@ -26,7 +26,7 @@ namespace Model
         /// <summary>
         /// 设备端口
         /// </summary>
-        public int EquipmentPort { get; set; }
+        public string EquipmentPort { get; set; }
         /// <summary>
         /// 默认消息
         /// </summary>
@@ -35,7 +35,7 @@ namespace Model
         /// WebSocketIp
         /// </summary>
         public string WebSocketIp { get; set; }
-        public int WebSocketPort { get; set; }
+        public string WebSocketPort { get; set; }
         /// <summary>
         /// 连接入口
         /// </summary>

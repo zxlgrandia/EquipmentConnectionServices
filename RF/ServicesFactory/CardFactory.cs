@@ -8,8 +8,9 @@ using System.Threading;
 using Utils;
 using WebSocketSharp;
 using WebSocketSharp.Server;
+using WindowsFormsApplication1;
 
-namespace WindowsFormsApplication1.ServicesFactory
+namespace ServicesFactory
 {
     public class CardFactory: EquipmentFactory
     {

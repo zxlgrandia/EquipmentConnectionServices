@@ -38,7 +38,7 @@ namespace ServicesFactory
     public class SensorEquipmentService : WebSocketBehavior
     {
         public string IP { get; set; }
-        public int Port { get; set; }
+        public string Port { get; set; }
         public string SendMessage { get; set; }
         public IPEndPoint EndPoint { get; set; }
         public Socket SocketServer { get; set; }
@@ -46,7 +46,7 @@ namespace ServicesFactory
         public string StartListen()
         {
             string returnData = "";
-            EndPoint = new IPEndPoint(IPAddress.Parse(IP), Port); // 本机IP和监听端口号
+            EndPoint = new IPEndPoint(IPAddress.Parse(IP), int.Parse(Port)); // 本机IP和监听端口号
             SocketServer = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             returnData = SendData(SendMessage);
             return returnData;
